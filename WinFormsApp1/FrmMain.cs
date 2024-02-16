@@ -47,11 +47,12 @@ namespace WinFormsApp1
 
                 var md5Hash = sb.ToString().ToLower();
 
-                _allStations = await GetFuelStations("https://api.drivstoffappen.no/api/v1/stations?stationTypeId=1", md5Hash, xClientId);
+                _allStations = await GetFuelStations("https://api.drivstoffappen.no/api/v1/stations?stationTypeId=1&includeDeleted=true&includePending=true", md5Hash, xClientId);
 
-                var expires = tokenResponse.ExpiresAt.Substring(0, tokenResponse.ExpiresAt.Length - 5).Replace("T", " ");
+                var plusPos = tokenResponse.ExpiresAt?.IndexOf("+") ?? 0;
+                var expires = tokenResponse.ExpiresAt?.Substring(0, plusPos).Replace("T", " ");
                 var tokenEnd = Convert.ToDateTime(expires).AddHours(1);
-                txtApiKey.Text = $"{md5Hash}, varer til: {tokenEnd:g}";
+                txtApiKey.Text = $"{md5Hash} Denne varer til: {tokenEnd:g}";
             }
 
 
@@ -60,8 +61,8 @@ namespace WinFormsApp1
             dgvFuelStations.Columns[1].Visible = false;
             dgvFuelStations.Columns[2].Visible = false;
             dgvFuelStations.Columns[3].Visible = false;
-            dgvFuelStations.Columns[8].Visible = false;
-            dgvFuelStations.Columns[9].Visible = false;
+            dgvFuelStations.Columns[8].Visible = true;
+            dgvFuelStations.Columns[9].Visible = true;
 
             lblStationCount.Text = $"Antall: {_allStations.Count()}";
         }
