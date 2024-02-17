@@ -35,7 +35,11 @@
             label2 = new Label();
             txtApiKey = new TextBox();
             lblStationCount = new Label();
+            dgvPrices = new DataGridView();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvFuelStations).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrices).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnGetStations
@@ -50,12 +54,16 @@
             // 
             // dgvFuelStations
             // 
-            dgvFuelStations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvFuelStations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgvFuelStations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFuelStations.Location = new Point(12, 41);
+            dgvFuelStations.MultiSelect = false;
             dgvFuelStations.Name = "dgvFuelStations";
-            dgvFuelStations.Size = new Size(1347, 585);
+            dgvFuelStations.RowHeadersVisible = false;
+            dgvFuelStations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFuelStations.Size = new Size(800, 585);
             dgvFuelStations.TabIndex = 2;
+            dgvFuelStations.Click += dgvFuelStations_Click;
             // 
             // txtSearch
             // 
@@ -93,6 +101,7 @@
             // 
             // lblStationCount
             // 
+            lblStationCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblStationCount.AutoSize = true;
             lblStationCount.Location = new Point(12, 629);
             lblStationCount.Name = "lblStationCount";
@@ -100,11 +109,33 @@
             lblStationCount.TabIndex = 7;
             lblStationCount.Text = "Antall: 0";
             // 
-            // Form1
+            // dgvPrices
+            // 
+            dgvPrices.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvPrices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrices.Location = new Point(818, 41);
+            dgvPrices.Name = "dgvPrices";
+            dgvPrices.RowHeadersVisible = false;
+            dgvPrices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrices.Size = new Size(562, 312);
+            dgvPrices.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(818, 359);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 100);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
+            // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1371, 653);
+            ClientSize = new Size(1392, 653);
+            Controls.Add(pictureBox1);
+            Controls.Add(dgvPrices);
             Controls.Add(lblStationCount);
             Controls.Add(txtApiKey);
             Controls.Add(label2);
@@ -112,9 +143,11 @@
             Controls.Add(txtSearch);
             Controls.Add(dgvFuelStations);
             Controls.Add(btnGetStations);
-            Name = "Form1";
+            Name = "FrmMain";
             Text = "Drivstoffappen - Stasjoner";
             ((System.ComponentModel.ISupportInitialize)dgvFuelStations).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrices).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,5 +162,7 @@
         private Label label2;
         private TextBox txtApiKey;
         private Label lblStationCount;
+        private DataGridView dgvPrices;
+        private PictureBox pictureBox1;
     }
 }

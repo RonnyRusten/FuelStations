@@ -8,5 +8,6 @@
         public string CreatedAt { get; set; }
         public string ExpiresAt { get; set; }
         public int Deleted { get; set; }
+        public string ApiKey { get; set; }
     }
 }
